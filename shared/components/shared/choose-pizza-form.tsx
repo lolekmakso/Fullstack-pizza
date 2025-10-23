@@ -69,7 +69,7 @@ export const ChoosePizzaForm: React.FC<Props> = ({
 
         <p className="text-gray-400">{textDetaills}</p>
 
-        <div className="flex flex-col gap-4 mt-5">
+        <div className="flex flex-row gap-4 mt-5 sm:flex-col justify-center">
           <GroupVariants
             items={availableSizes}
             value={String(size)}
