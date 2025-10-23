@@ -2,9 +2,14 @@ import { prisma } from '@/prisma/prisma-client';
 import { updateCartTotalAmount } from '@/shared/lib/update-cart-total-amount';
 import { NextRequest, NextResponse } from 'next/server';
 
-export async function PATCH(req: NextRequest, { params }: { params: { id: string } }) {
+export async function PATCH(
+  req: NextRequest,
+  { params }: { params: Promise<{ id: string }> }
+) {
   try {
-    const id = Number(params.id);
+    const { id: idStr } = await params;
+    const id = Number(idStr);
+
     const data = (await req.json()) as { quantity: number };
     const token = req.cookies.get('cartToken')?.value;
 
@@ -12,23 +17,15 @@ export async function PATCH(req: NextRequest, { params }: { params: { id: string
       return NextResponse.json({ error: 'Токен кошика не знайдено' });
     }
 
-    const cartItem = await prisma.cartItem.findFirst({
-      where: {
-        id,
-      },
-    });
+    const cartItem = await prisma.cartItem.findFirst({ where: { id } });
 
     if (!cartItem) {
       return NextResponse.json({ error: 'Елемент кошика не знайдено' });
     }
 
     await prisma.cartItem.update({
-      where: {
-        id,
-      },
-      data: {
-        quantity: data.quantity,
-      },
+      where: { id },
+      data: { quantity: data.quantity },
     });
 
     const updatedUserCart = await updateCartTotalAmount(token);
@@ -36,33 +33,35 @@ export async function PATCH(req: NextRequest, { params }: { params: { id: string
     return NextResponse.json(updatedUserCart);
   } catch (error) {
     console.log('[CART_PATCH] Помилка сервера', error);
-    return NextResponse.json({ message: 'Не вдалося оновити кошик' }, { status: 500 });
+    return NextResponse.json(
+      { message: 'Не вдалося оновити кошик' },
+      { status: 500 }
+    );
   }
 }
 
-export async function DELETE(req: NextRequest, { params }: { params: { id: string } }) {
+export async function DELETE(
+  req: NextRequest,
+  { params }: { params: Promise<{ id: string }> }
+) {
   try {
-    const id = Number(params.id);
+    const { id: idStr } = await params;
+    const id = Number(idStr);
+
     const token = req.cookies.get('cartToken')?.value;
 
     if (!token) {
       return NextResponse.json({ error: 'Токен кошика не знайдено' });
     }
 
-    const cartItem = await prisma.cartItem.findFirst({
-      where: {
-        id,
-      },
-    });
+    const cartItem = await prisma.cartItem.findFirst({ where: { id } });
 
     if (!cartItem) {
       return NextResponse.json({ error: 'Елемент кошика не знайдено' });
     }
 
     await prisma.cartItem.delete({
-      where: {
-        id,
-      },
+      where: { id },
     });
 
     const updatedUserCart = await updateCartTotalAmount(token);
@@ -70,6 +69,9 @@ export async function DELETE(req: NextRequest, { params }: { params: { id: strin
     return NextResponse.json(updatedUserCart);
   } catch (error) {
     console.log('[CART_DELETE] Помилка сервера', error);
-    return NextResponse.json({ message: 'Не вдалося видалити кошик' }, { status: 500 });
+    return NextResponse.json(
+      { message: 'Не вдалося видалити кошик' },
+      { status: 500 }
+    );
   }
 }
