@@ -1,0 +1,47 @@
+export const categories = [
+  { name: 'Піци' },
+  { name: 'Сніданок' },
+  { name: 'Закуски' },
+  { name: 'Коктейлі' },
+  { name: 'Напої' },
+];
+
+export const _ingredients = [
+  { name: 'Сирний бортик', price: 79, imageUrl: '/assets/ingredients/ingredient-1.png' },
+  { name: 'Сливкова моцарела', price: 39, imageUrl: '/assets/ingredients/ingredient-2.png' },
+  { name: 'Сири чеддер і пармезан', price: 39, imageUrl: '/assets/ingredients/ingredient-3.png' },
+  { name: 'Гострий перець халапеньйо', price: 29, imageUrl: '/assets/ingredients/ingredient-4.png' },
+  { name: 'Ніжний курча', price: 39, imageUrl: '/assets/ingredients/ingredient-5.png' },
+  { name: 'Шампіньйони', price: 29, imageUrl: '/assets/ingredients/ingredient-6.png' },
+  { name: 'Шинка', price: 39, imageUrl: '/assets/ingredients/ingredient-7.png' },
+  { name: 'Пікантна пепероні', price: 39, imageUrl: '/assets/ingredients/ingredient-8.png' },
+  { name: 'Гостра чорізо', price: 39, imageUrl: '/assets/ingredients/ingredient-9.png' },
+  { name: 'Мариновані огірочки', price: 29, imageUrl: '/assets/ingredients/ingredient-10.png' },
+  { name: 'Свіжі томати', price: 29, imageUrl: '/assets/ingredients/ingredient-11.png' },
+  { name: 'Червона цибуля', price: 29, imageUrl: '/assets/ingredients/ingredient-12.png' },
+  { name: 'Соковиті ананаси', price: 29, imageUrl: '/assets/ingredients/ingredient-13.png' },
+  { name: 'Італійські трави', price: 29, imageUrl: '/assets/ingredients/ingredient-14.png' },
+  { name: 'Солодкий перець', price: 29, imageUrl: '/assets/ingredients/ingredient-15.png' },
+  { name: 'Кубики бринзи', price: 49, imageUrl: '/assets/ingredients/ingredient-16.png' },
+  { name: 'Мітболи', price: 49, imageUrl: '/assets/ingredients/ingredient-17.png' },
+].map((obj, index) => ({ id: index + 1, ...obj }));
+
+export const products = [
+  { name: 'Омлет з шинкою та грибами', imageUrl: '/assets/products/product-1.webp', categoryId: 2 },
+  { name: 'Омлет з пепероні', imageUrl: '/assets/products/product-2.webp', categoryId: 2 },
+  { name: 'Лате', imageUrl: '/assets/products/product-3.webp', categoryId: 2 },
+  { name: 'Денвіч з шинкою та сиром', imageUrl: '/assets/products/product-4.webp', categoryId: 3 },
+  { name: 'Курячі нагетси', imageUrl: '/assets/products/product-5.webp', categoryId: 3 },
+  { name: 'Картопля з печі з соусом 🌱', imageUrl: '/assets/products/product-6.webp', categoryId: 3 },
+  { name: 'Додстер', imageUrl: '/assets/products/product-7.webp', categoryId: 3 },
+  { name: 'Гострий Додстер 🌶️🌶️', imageUrl: '/assets/products/product-8.webp', categoryId: 3 },
+  { name: 'Банановий молочний коктейль', imageUrl: '/assets/products/product-9.webp', categoryId: 4 },
+  { name: 'Молочний коктейль з карамельним яблуком', imageUrl: '/assets/products/product-10.webp', categoryId: 4 },
+  { name: 'Молочний коктейль з печивом Oreo', imageUrl: '/assets/products/product-11.webp', categoryId: 4 },
+  { name: 'Класичний молочний коктейль 👶', imageUrl: '/assets/products/product-12.webp', categoryId: 4 },
+  { name: 'Ірландський капучино', imageUrl: '/assets/products/product-13.webp', categoryId: 5 },
+  { name: 'Карамельний капучино', imageUrl: '/assets/products/product-14.webp', categoryId: 5 },
+  { name: 'Кокосовий латте', imageUrl: '/assets/products/product-15.webp', categoryId: 5 },
+  { name: 'Американо', imageUrl: '/assets/products/product-16.webp', categoryId: 5 },
+  { name: 'Лате', imageUrl: '/assets/products/product-17.webp', categoryId: 5 },
+];
