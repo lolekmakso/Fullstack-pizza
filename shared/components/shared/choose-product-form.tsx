@@ -27,7 +27,7 @@ export const ChooseProductForm: React.FC<Props> = ({
     <div
       className={cn(
         className,
-        "flex flex-col mx-10 lg:flex-row items-center lg:items-start gap-6 lg:gap-10"
+        "flex flex-col lg:flex-row items-center lg:items-start gap-6 lg:gap-10"
       )}
     >
       {/* Картинка сверху на мобильных */}
